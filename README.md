@@ -43,7 +43,7 @@ This project is an AI-driven medical diagnosis system designed to assist in pred
 
 ### Cloning the Repository
 ```bash
-git clone https://github.com/your-username/medical-diagnosis-system.git
+git clone https://github.com/patil_data/medical-diagnosis-system.git
 cd medical-diagnosis-system
 ```
 
