@@ -11,8 +11,6 @@ This project is an AI-driven medical diagnosis system designed to assist in pred
 - [Running the Application](#running-the-application)
 - [API Endpoints](#api-endpoints)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 - Symptom extraction using NLP (SciSpaCy & BioBERT)
