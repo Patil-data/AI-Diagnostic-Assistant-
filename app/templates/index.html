@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medical Diagnosis System</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Medical Diagnosis System</h1>
+    <form action="/predict" method="post">
+        <label for="symptoms">Enter Symptoms:</label>
+        <input type="text" id="symptoms" name="symptoms" required>
+        <button type="submit">Predict</button>
+    </form>
+    {% if prediction %}
+        <h2>Predicted Disease: {{ prediction }}</h2>
+        <canvas id="confidenceChart"></canvas>
+        <script>
+            var ctx = document.getElementById('confidenceChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Disease 1', 'Disease 2', 'Disease 3'],  // Replace with actual disease names
+                    datasets: [{
+                        label: 'Confidence Score',
+                        data: {{ confidence_scores }},
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+    {% endif %}
+    <h2>Recommended Lab Tests</h2>
+    {% if lab_tests %}
+        <ul>
+        {% for test in lab_tests %}
+            <li>{{ test.name }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

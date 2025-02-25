@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Link Pharmacy</title>
+</head>
+<body>
+    <h1>Link Pharmacy</h1>
+    <form action="/link_pharmacy" method="post">
+        <label for="prescription_id">Prescription ID:</label>
+        <input type="number" id="prescription_id" name="prescription_id" required>
+        <label for="pharmacy_id">Select Pharmacy:</label>
+        <select id="pharmacy_id" name="pharmacy_id" required>
+        {% for pharmacy in pharmacies %}
+            <option value="{{ pharmacy.id }}">{{ pharmacy.name }}</option>
+        {% endfor %}
+        </select>
+        <button type="submit">Link Pharmacy</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule Telemedicine Appointment</title>
+</head>
+<body>
+    <h1>Schedule Telemedicine Appointment</h1>
+    <form id="telemedicine-form">
+        <label for="provider_id">Provider ID:</label>
+        <input type="text" id="provider_id" name="provider_id" required>
+        <label for="appointment_date">Appointment Date:</label>
+        <input type="date" id="appointment_date" name="appointment_date" required>
+        <button type="submit">Schedule</button>
+    </form>
+    <div id="telemedicine-response"></div>
+    <script>
+        document.getElementById('telemedicine-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const provider_id = document.getElementById('provider_id').value;
+            const appointment_date = document.getElementById('appointment_date').value;
+            fetch('/schedule_telemedicine', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ provider_id: provider_id, appointment_date: appointment_date })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('telemedicine-response').innerText = data.message;
+            });
+        });
+    </script>
+</body>
+</html>

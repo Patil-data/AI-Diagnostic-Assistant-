@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nearest Hospitals</title>
+</head>
+<body>
+    <h1>Nearest Hospitals</h1>
+    <ul>
+    {% for hospital in hospitals %}
+        <li>{{ hospital.name }} - {{ hospital.address }}</li>
+    {% endfor %}
+    </ul>
+    <form action="/schedule_appointment" method="post">
+        <label for="hospital_id">Select Hospital:</label>
+        <select id="hospital_id" name="hospital_id" required>
+        {% for hospital in hospitals %}
+            <option value="{{ hospital.id }}">{{ hospital.name }}</option>
+        {% endfor %}
+        </select>
+        <label for="appointment_date">Appointment Date:</label>
+        <input type="date" id="appointment_date" name="appointment_date" required>
+        <button type="submit">Schedule Appointment</button>
+    </form>
+</body>
+</html>

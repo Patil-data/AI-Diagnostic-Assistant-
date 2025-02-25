@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI-Powered Virtual Health Assistant</title>
+</head>
+<body>
+    <h1>AI-Powered Virtual Health Assistant</h1>
+    <form id="chat-form">
+        <label for="message">Enter your name:</label>
+        <input type="text" id="message" name="message" required>
+        <button type="submit">Send</button>
+    </form>
+    <div id="chat-response"></div>
+    <script>
+        document.getElementById('chat-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const message = document.getElementById('message').value;
+            fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('chat-response').innerText = data.response;
+            });
+        });
+    </script>
+</body>
+</html>
