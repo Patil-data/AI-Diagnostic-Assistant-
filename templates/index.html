@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medical Diagnosis</title>
+</head>
+<body>
+    <h1>Medical Diagnosis System</h1>
+    <form action="/predict" method="post">
+        <label for="symptoms">Enter Symptoms:</label>
+        <input type="text" id="symptoms" name="symptoms" required>
+        <button type="submit">Predict</button>
+    </form>
+    {% if prediction %}
+        <h2>Predicted Disease: {{ prediction }}</h2>
+        <form action="/recommend_tests" method="post">
+            <input type="hidden" name="predicted_disease" value="{{ prediction }}">
+            <button type="submit">Recommend Lab Tests</button>
+        </form>
+    {% endif %}
+    {% if lab_tests %}
+        <h2>Recommended Lab Tests:</h2>
+        <ul>
+        {% for test in lab_tests %}
+            <li>{{ test.name }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    <h2>Find Nearest Hospitals</h2>
+    <form action="/find_hospitals" method="post">
+        <label for="location">Enter Location:</label>
+        <input type="text" id="location" name="location" required>
+        <button type="submit">Find Hospitals</button>
+    </form>
+    {% if hospitals %}
+        <h2>Nearest Hospitals:</h2>
+        <ul>
+        {% for hospital in hospitals %}
+            <li>{{ hospital.name }} - {{ hospital.address }}</li>
+        {% endfor %}
+        </ul>
+        <form action="/schedule_appointment" method="post">
+            <label for="hospital_id">Select Hospital:</label>
+            <select id="hospital_id" name="hospital_id" required>
+            {% for hospital in hospitals %}
+                <option value="{{ hospital.id }}">{{ hospital.name }}</option>
+            {% endfor %}
+            </select>
+            <label for="appointment_date">Appointment Date:</label>
+            <input type="date" id="appointment_date" name="appointment_date" required>
+            <button type="submit">Schedule Appointment</button>
+        </form>
+    {% endif %}
+    <h2>Link Pharmacy for Prescription Refills</h2>
+    <form action="/link_pharmacy" method="post">
+        <label for="prescription_id">Prescription ID:</label>
+        <input type="number" id="prescription_id" name="prescription_id" required>
+        <label for="pharmacy_id">Select Pharmacy:</label>
+        <select id="pharmacy_id" name="pharmacy_id" required>
+        {% for pharmacy in pharmacies %}
+            <option value="{{ pharmacy.id }}">{{ pharmacy.name }}</option>
+        {% endfor %}
+        </select>
+        <button type="submit">Link Pharmacy</button>
+    </form>
+    <h2>Daily Symptom Tracking</h2>
+    <form action="/track_symptoms" method="post">
+        <label for="user_id">User ID:</label>
+        <input type="number" id="user_id" name="user_id" required>
+        <label for="symptoms">Enter Symptoms:</label>
+        <input type="text" id="symptoms" name="symptoms" required>
+        <button type="submit">Track Symptoms</button>
+    </form>
+    <h2>Set Medication Reminder</h2>
+    <form action="/set_medication_reminder" method="post">
+        <label for="user_id">User ID:</label>
+        <input type="number" id="user_id" name="user_id" required>
+        <label for="medication">Medication:</label>
+        <input type="text" id="medication" name="medication" required>
+        <label for="reminder_time">Reminder Time:</label>
+        <input type="time" id="reminder_time" name="reminder_time" required>
+        <button type="submit">Set Reminder</button>
+    </form>
+</body>
+</html>

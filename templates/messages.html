@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Messages</title>
+</head>
+<body>
+    <h1>Messages</h1>
+    <form action="/messages" method="post">
+        <label for="sender">Sender:</label>
+        <input type="text" id="sender" name="sender" required>
+        <label for="receiver">Receiver:</label>
+        <input type="text" id="receiver" name="receiver" required>
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+    <h2>Recent Messages</h2>
+    <ul>
+    {% for message in messages %}
+        <li><strong>{{ message.sender }}</strong> to <strong>{{ message.receiver }}</strong> at {{ message.timestamp }}: {{ message.content }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
