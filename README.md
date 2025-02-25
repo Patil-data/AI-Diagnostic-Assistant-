@@ -174,8 +174,3 @@ docker-compose up
 6. **Telemedicine**: Schedule telemedicine appointments with healthcare providers.
 7. **Analytics Dashboard**: View real-time analytics data for healthcare providers.
 
-## Contributing
-Contributions are welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines on how to contribute to this project.
-
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
