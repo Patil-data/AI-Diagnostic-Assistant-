@@ -131,7 +131,7 @@ docker-compose up
 - **Request Body**:
   ```json
   {
-    "location": "New York"
+    "location": "Maharashtra,India"
   }
   ```
 
