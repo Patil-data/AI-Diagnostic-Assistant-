@@ -1,0 +1,11 @@
+flask
+sqlalchemy
+psycopg2-binary
+scispacy
+torch
+torchvision
+transformers
+joblib
+requests
+flask-cors
+gunicorn
