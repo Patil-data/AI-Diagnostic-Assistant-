@@ -37,4 +37,4 @@ def profile():
     return 'Welcome to the profile page!'
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=False)
